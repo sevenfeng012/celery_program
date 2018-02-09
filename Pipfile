@@ -1,0 +1,24 @@
+[[source]]
+
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+
+[dev-packages]
+
+
+
+[packages]
+
+tornado = "*"
+tornado-celery = "*"
+tornado-redis = "*"
+sqlalchemy = "*"
+requests = "*"
+configparser = "*"
+sqlalchemy-migrate = "*"
+gevent = "*"
+celery = "==3.0.17"
+redis = "*"
+serpy = "*"
