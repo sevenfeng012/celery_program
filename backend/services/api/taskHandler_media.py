@@ -11,6 +11,7 @@ from tornado import web
 from tornado import gen
 import tcelery
 import tasks
+from tasks_media import calstoreresult
 import json
 
 tcelery.setup_nonblocking_producer()
@@ -21,7 +22,7 @@ class taskHandler(web.RequestHandler):
     """
 
     def add(self, x, y):
-        result = tasks.calstoreresult(x, y)
+        result = calstoreresult(x, y)
         return 2
 
     @web.asynchronous
