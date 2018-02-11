@@ -21,34 +21,16 @@ class taskHandler(web.RequestHandler):
     """
 
     def add(self, x, y):
-        # tasks.add.apply_async(args=[x, y])
-
-        # result = tasks.add.delay(x,y)
-
-        # while not result.ready():
-        #     print "not ready"
-
-        # return result.get()
-
         result = tasks_media.calstoreresult(x, y)
-        return 2
+        return 0
 
     @web.asynchronous
     @gen.coroutine
     def get(self):
         print "CALLING get()"
         ret = self.add(1, 5)
-        # tasks.add.apply_async(args=[1,5], queue="audio",
-        #                        routing_key="ajmd.audio",callback=self.on_result)
-        # tasks.add.apply_async(args=[1,6],callback=self.on_result)
         self.write(str(ret))
         self.finish()
-
-        # tasks.demo.apply_async(
-        #     args=['demo'],
-        #     queue='demo',
-        #     routing_key='task.demo',
-        #     callback=self.on_success)
 
     @web.asynchronous
     @gen.coroutine

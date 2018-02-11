@@ -8,24 +8,20 @@ from kombu import Queue
 
 import time
 from celery.canvas import chain
-# from gevent import monke
-
-# monkey.patch_all()
 
 import json
 import requests
 
 
-app = Celery("ca_task", backend="redis://98c7c9c199834a06:5BvSHQDH@8cc8883371014548.m.cnhza.kvstore.aliyuncs.com:6379/1",
-             broker="redis://98c7c9c199834a06:5BvSHQDH@8cc8883371014548.m.cnhza.kvstore.aliyuncs.com:6379/0")
+worker_app =  = Celery("ca_task", backend="redis://98c7c9c199834a06:5BvSHQDH@8cc8883371014548.m.cnhza.kvstore.aliyuncs.com:6379/1",
+             broker="redis://98c7c9c199834a06:5BvSHQDH@8cc8883371014548.m.cnhza.kvstore.aliyuncs.com:6379/0",include=['ca.ca_task'])
 
-app.conf.update(
+worker_app = .conf.update(
     ENABLE_UTC=True,
     CELERY_ACCEPT_CONTENT=['application/json'],
     CELERY_TASK_SERIALIZER='json',
     CELERY_RESULT_SERIALIZER='json',
     CELERY_TIMEZONE='Asia/Shanghai',
-    Queue('ca_task_queue', routing_key='ca_task_queue'),
 )
 
 

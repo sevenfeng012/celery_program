@@ -36,10 +36,6 @@ class dbHandler(tornado.web.RequestHandler):
         data = self.db.query(Article).all()
         result = ''
 
-        # for item in data:
-        #     result += "title:%s,user:%s,time:%s,content:%s </br>" % (
-        #         item.title, item.user, item.time, item.content)
-
         for item in data:
             result += "content:%s </br>" % (
                 item.content)
